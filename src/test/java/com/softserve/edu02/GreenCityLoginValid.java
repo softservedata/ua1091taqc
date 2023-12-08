@@ -42,6 +42,8 @@ public class GreenCityLoginValid {
         //
         //driver.manage().timeouts().implicitlyWait(IMPLICITLY_WAIT_SECONDS, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS)); // 0 by default
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(180));
+        driver.manage( ).timeouts().scriptTimeout(Duration.ofSeconds(100));
         driver.manage().window().maximize();
         //driver.manage().window().setSize(new Dimension(800, 550));
         System.out.println("@BeforeAll executed");
@@ -70,6 +72,9 @@ public class GreenCityLoginValid {
         //
         driver.manage().deleteAllCookies();
         // TODO delete token
+        // window.localStorage.removeItem('accessToken');
+        // window.localStorage.removeItem('refreshToken');
+        // js.executeScript(String.format("window.localStorage.clear();"));
         // Refresh page
         presentationSleep(4); // For Presentation ONLY
         //
@@ -83,7 +88,8 @@ public class GreenCityLoginValid {
         // Click Login Button
         //driver.findElement(By.cssSelector("a.ubs-header-sign-in")).click();
         //driver.findElement(By.cssSelector(".ubs-header-sing-in-img")).click();
-        driver.findElement(By.cssSelector("app-header:nth-child(1) .ubs-header-sing-in-img")).click();
+        //driver.findElement(By.cssSelector("app-header:nth-child(1) .ubs-header-sing-in-img")).click();
+        driver.findElement(By.cssSelector("app-ubs .ubs-header-sing-in-img")).click();
         //
         // Burger menu click
         //driver.findElement(By.cssSelector("div.menu-icon-wrapper")).click();
@@ -125,7 +131,8 @@ public class GreenCityLoginValid {
         // Click Login Button
         //driver.findElement(By.cssSelector("a.ubs-header-sign-in")).click();
         //driver.findElement(By.cssSelector(".ubs-header-sing-in-img")).click();
-        driver.findElement(By.cssSelector("app-header:nth-child(1) .ubs-header-sing-in-img")).click();
+        //driver.findElement(By.cssSelector("app-header:nth-child(1) .ubs-header-sing-in-img")).click();
+        driver.findElement(By.cssSelector("app-ubs .ubs-header-sing-in-img")).click();
         //
         // Burger menu click
         //driver.findElement(By.cssSelector("div.menu-icon-wrapper")).click();
