@@ -81,9 +81,38 @@ public class GreenCityLoginValid {
         System.out.println("\t@AfterEach executed");
     }
 
+    private void signIn(String email, String password) {
+        // Click Login Button
+        //driver.findElement(By.cssSelector("a.ubs-header-sign-in")).click();
+        //driver.findElement(By.cssSelector(".ubs-header-sing-in-img")).click();
+        //driver.findElement(By.cssSelector("app-header:nth-child(1) .ubs-header-sing-in-img")).click();
+        driver.findElement(By.cssSelector("app-ubs .ubs-header-sing-in-img")).click();
+        //
+        // Burger menu click
+        //driver.findElement(By.cssSelector("div.menu-icon-wrapper")).click();
+        //driver.findElement(By.cssSelector("a.tertiary-global-button")).click();
+        presentationSleep(); // For Presentation ONLY
+        //
+        // Fill email input
+        driver.findElement(By.id("email")).click();
+        driver.findElement(By.id("email")).clear();
+        driver.findElement(By.id("email")).sendKeys("tyv09754@zslsz.com");
+        presentationSleep(); // For Presentation ONLY
+        //
+        // Fill password input
+        driver.findElement(By.id("password")).click();
+        driver.findElement(By.id("password")).clear();
+        driver.findElement(By.id("password")).sendKeys("Qwerty_1");
+        presentationSleep(); // For Presentation ONLY
+        //
+        // Press Button Login
+        driver.findElement(By.cssSelector("button[type='submit']")).click();
+        presentationSleep(); // For Presentation ONLY
+    }
+
     @Test
     public void checkLogin() {
-        //
+        /*
         // Steps TC
         // Click Login Button
         //driver.findElement(By.cssSelector("a.ubs-header-sign-in")).click();
@@ -111,6 +140,9 @@ public class GreenCityLoginValid {
         // Press Button Login
         driver.findElement(By.cssSelector("button[type='submit']")).click();
         presentationSleep(); // For Presentation ONLY
+        */
+        //
+        signIn("tyv09754@zslsz.com", "Qwerty_1");
         //
         // get Username
         String actualUserName = driver.findElement(By.cssSelector("li.ubs-user-name")).getText();
@@ -126,7 +158,7 @@ public class GreenCityLoginValid {
 
     @Test
     public void checkMyHabit() {
-        //
+        /*
         // Steps TC
         // Click Login Button
         //driver.findElement(By.cssSelector("a.ubs-header-sign-in")).click();
@@ -154,6 +186,9 @@ public class GreenCityLoginValid {
         // Press Button Login
         driver.findElement(By.cssSelector("button[type='submit']")).click();
         presentationSleep(); // For Presentation ONLY
+        */
+        //
+        signIn("tyv09754@zslsz.com", "Qwerty_1");
         //
         // get Username
         String actualUserName = driver.findElement(By.cssSelector("li.ubs-user-name")).getText();
