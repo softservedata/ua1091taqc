@@ -53,7 +53,7 @@ public abstract class TestRunner {
         }
     }
 
-    private static void takeScreenShort() {
+    private static void takeScreenShot() {
         //String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
         LocalDateTime localDate = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(TIME_TEMPLATE);
@@ -141,7 +141,7 @@ public abstract class TestRunner {
             System.out.println("\t\t\tTest_Name = " + testInfo.getDisplayName() + " fail");
             System.out.println("\t\t\tTest_Method = " + testInfo.getTestMethod() + " fail");
             //
-            takeScreenShort();
+            takeScreenShot();
             takePageSource();
         }
         //
