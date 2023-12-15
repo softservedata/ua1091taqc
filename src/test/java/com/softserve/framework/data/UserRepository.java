@@ -13,8 +13,8 @@ public final class UserRepository {
         return new User("tyv09754@zslsz.com", "Qwerty_1", "QwertyY");
     }
 
-    public static User getValidUserQwertyY2() {
-        return new User("uvsshemwlgedtlowbi@cazlv.com", "Qwerty_1", "QwertyY2");
+    public static User getValidUserMyName() {
+        return new User("jahovi6261@hupoi.com", "Super_qwerty_1", "MyName");
     }
 
     /*

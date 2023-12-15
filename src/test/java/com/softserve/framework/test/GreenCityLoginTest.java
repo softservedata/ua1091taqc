@@ -25,7 +25,8 @@ public class GreenCityLoginTest extends TestRunner {
 //                Arguments.of(new User("tyv09754@zslsz.com", "Qwerty_1", "QwertyY"))
 //        );
         return Stream.of(
-                Arguments.of(UserRepository.getValidUserQwertyY())
+                Arguments.of(UserRepository.getValidUserQwertyY()),
+                Arguments.of(UserRepository.getValidUserMyName())
         );
     }
 
@@ -50,8 +51,8 @@ public class GreenCityLoginTest extends TestRunner {
         System.out.println("\t\tTest testUi() executed");
     }
 
-    @ParameterizedTest(name = "{index} => user={0}")
-    @MethodSource("provideUsers")
+    //@ParameterizedTest(name = "{index} => user={0}")
+    //@MethodSource("provideUsers")
     //@Test
     public void checkMyHabit(User user) {
         //

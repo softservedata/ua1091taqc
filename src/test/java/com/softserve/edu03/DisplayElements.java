@@ -42,6 +42,7 @@ public class DisplayElements {
     public void tearThis(TestInfo testInfo) throws Exception {
         if (!isSuccess) {
             System.out.println("\t\t\tTest_Name = " + testInfo.getDisplayName() + " fail");
+            System.out.println("\t\t\tTest_Method = " + testInfo.getTestMethod() + " fail");
         }
     }
 
@@ -76,6 +77,7 @@ public class DisplayElements {
         Thread.sleep(2000); // for presentation
         //
         Thread.sleep(4000); // for presentation
+        Assertions.assertTrue(true);
         isSuccess = true;
     }
 

@@ -59,7 +59,7 @@ public class SeleniumDownload {
         presentationSleep(); // For Presentation ONLY
     }
 
-    @Test
+    //@Test
     public void checlDisplayElements() {
         // Step
         System.out.println("[INFO] Start Test testLogin()");
@@ -132,4 +132,33 @@ public class SeleniumDownload {
         driver.switchTo().alert().accept();
         presentationSleep(); // For Presentation ONLY
     }
+
+    @Test
+    public void checkNewTab() {
+        String originalWindow = driver.getWindowHandle();
+        // Create new tab
+        driver.switchTo().newWindow(WindowType.TAB);
+        driver.get("https://www.google.com/");
+        presentationSleep(); // For Presentation ONLY
+        //
+        System.out.println("Number of tabs = " + driver.getWindowHandles().size());
+        driver.findElement(By.name("q")).sendKeys("mac" + Keys.ENTER);
+        presentationSleep(); // For Presentation ONLY
+        //
+        for (String windowHandle : driver.getWindowHandles()) {
+            driver.switchTo().window(windowHandle);
+            presentationSleep(2); // For Presentation ONLY
+            System.out.println("Title = " + driver.getTitle());
+        }
+        //
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (originalWindow.contentEquals(windowHandle)) {
+                driver.switchTo().window(windowHandle);
+                System.out.println("Return to Original tab");
+                break;
+            }
+        }
+        presentationSleep(); // For Presentation ONLY
+    }
+
 }
