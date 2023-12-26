@@ -1,5 +1,6 @@
 package com.softserve.framework.test;
 
+import com.softserve.edu.Applog;
 import com.softserve.framework.library.GuestFunctions;
 import com.softserve.framework.tools.LocalStorageJS;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -10,6 +11,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,6 +40,7 @@ public abstract class TestRunner {
 
     protected static WebDriver driver;
     protected static boolean isTestSuccessful = false;
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     // Overload
     public static void presentationSleep() {
@@ -53,7 +57,9 @@ public abstract class TestRunner {
         }
     }
 
-    private static void takeScreenShot() {
+    private void takeScreenShot() {
+        logger.debug("Start takeScreenShot()");
+        //
         //String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
         LocalDateTime localDate = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(TIME_TEMPLATE);
@@ -69,6 +75,8 @@ public abstract class TestRunner {
     }
 
     private void takePageSource() {
+        logger.debug("Start takePageSource()");
+        //
         String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
         String pageSource = driver.getPageSource();
         byte[] strToBytes = pageSource.getBytes();
@@ -91,8 +99,8 @@ public abstract class TestRunner {
             loginFormCloseButton.get(0).click();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0)); // 0 by default
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
-            wait.until(ExpectedConditions.stalenessOf(closeButton));
-            //presentationSleep();
+                wait.until(ExpectedConditions.stalenessOf(closeButton)); //TODO
+            presentationSleep(); // WAIT!!! //TODO
         }
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS)); // 0 by default
         presentationSleep(); // For Presentation ONLY
@@ -138,6 +146,8 @@ public abstract class TestRunner {
     public void tearThis(TestInfo testInfo) {
         if (!isTestSuccessful) {
             // Log.error
+            logger.error("Test_Name = " + testInfo.getDisplayName() + " failed");
+            //
             System.out.println("\t\t\tTest_Name = " + testInfo.getDisplayName() + " fail");
             System.out.println("\t\t\tTest_Method = " + testInfo.getTestMethod() + " fail");
             //
@@ -164,6 +174,7 @@ public abstract class TestRunner {
         // Refresh page
         presentationSleep(4); // For Presentation ONLY
         driver.navigate().refresh();
+        presentationSleep(1); // For Presentation ONLY
         //
         System.out.println("\t@AfterEach executed");
     }

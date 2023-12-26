@@ -24,10 +24,14 @@ public class GreenCityLoginTest extends TestRunner {
 //        return Stream.of(
 //                Arguments.of(new User("tyv09754@zslsz.com", "Qwerty_1", "QwertyY"))
 //        );
-        return Stream.of(
-                Arguments.of(UserRepository.getValidUserQwertyY()),
-                Arguments.of(UserRepository.getValidUserMyName())
-        );
+//        return Stream.of(
+//                Arguments.of(UserRepository.getValidUserQwertyY()),
+//                Arguments.of(UserRepository.getValidUserMyName())
+//        );
+//        return UserRepository.fromList().stream()
+//                .map(user->Arguments.of(user));
+        return UserRepository.fromCsv().stream()
+                .map(user->Arguments.of(user));
     }
 
     //@ParameterizedTest(name = "{index} => email={0}, password={1}, username={2}")
@@ -36,6 +40,7 @@ public class GreenCityLoginTest extends TestRunner {
     //@Test
     //public void checkLogin(String email, String password, String username) {
     public void checkLogin(User user) {
+        logger.info("Start checkLogin() with user = " + user);
         //
         guestFunctions.signIn(user);
         //
@@ -55,6 +60,7 @@ public class GreenCityLoginTest extends TestRunner {
     //@MethodSource("provideUsers")
     //@Test
     public void checkMyHabit(User user) {
+        logger.info("Start checkMyHabit() with user = " + user);
         //
         guestFunctions.signIn(user);
         //

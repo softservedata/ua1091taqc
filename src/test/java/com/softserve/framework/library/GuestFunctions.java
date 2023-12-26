@@ -1,11 +1,15 @@
 package com.softserve.framework.library;
 
+import com.softserve.edu.Applog;
 import com.softserve.framework.data.User;
 import com.softserve.framework.test.TestRunner;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class GuestFunctions {
+    public static final Logger logger = LoggerFactory.getLogger(GuestFunctions.class);
     private WebDriver driver;
 
     public GuestFunctions(WebDriver driver) {
@@ -14,6 +18,8 @@ public class GuestFunctions {
 
     //public void signIn(String email, String password) {
     public void signIn(User user) {
+        logger.debug("Start signIn with user = " + user);
+        //
         // Click Login Button
         //driver.findElement(By.cssSelector("a.ubs-header-sign-in")).click();
         //driver.findElement(By.cssSelector(".ubs-header-sing-in-img")).click();
@@ -24,6 +30,8 @@ public class GuestFunctions {
         //driver.findElement(By.cssSelector("div.menu-icon-wrapper")).click();
         //driver.findElement(By.cssSelector("a.tertiary-global-button")).click();
         TestRunner.presentationSleep(); // For Presentation ONLY
+        //
+        logger.trace("Point 33");
         //
         // Fill email input
         driver.findElement(By.id("email")).click();
@@ -40,6 +48,8 @@ public class GuestFunctions {
         // Press Button Login
         driver.findElement(By.cssSelector("button[type='submit']")).click();
         TestRunner.presentationSleep(); // For Presentation ONLY
+        //
+        logger.debug("Done signIn with user = " + user);
     }
 
 }

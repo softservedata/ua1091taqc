@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
 
@@ -18,8 +19,8 @@ public class DisplayElements {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         //
-        //WebDriverManager.firefoxdriver().setup();
-        //WebDriver driver = new FirefoxDriver();
+//        WebDriverManager.firefoxdriver().setup();
+//        driver = new FirefoxDriver();
         //
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); // 0 by default
         driver.manage().window().maximize();
