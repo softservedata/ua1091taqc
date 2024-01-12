@@ -2,6 +2,7 @@ package com.softserve.edu02;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 
@@ -46,6 +47,17 @@ public class ParJUnit5Test {
     @MethodSource("sumProvider")
     void sum3(int a, int b, int sum) {
         Assertions.assertEquals(sum, a + b);
+    }
+
+    @Test
+    void testExpectedException() {
+        RuntimeException thrown = Assertions.assertThrows(RuntimeException.class, () -> {
+            //Code under test
+            int i = 0;
+            i = 10 / (i + 0);
+        });
+        System.out.println("\t\tMessage = " + thrown.getMessage());
+        Assertions.assertEquals("/ by zero", thrown.getMessage());
     }
 }
 
