@@ -16,6 +16,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>17</java.version>
         <org.slf4j.version>2.0.9</org.slf4j.version>
+        <!-- - - - - - Password - - - - - -->
+        <application.password>null123</application.password>
     </properties>
 
    
@@ -105,11 +107,18 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.2</version>
-<!--                <configuration>-->
+                <configuration>
+                    <systemPropertyVariables>
+                        <surefire.application.password>
+                            ${application.password}
+                        </surefire.application.password>
+                    </systemPropertyVariables>
 <!--                    <includes>-->
+<!--                        <include>**/AppTest2.java</include>-->
 <!--                        <include>**/*.java</include>-->
 <!--                    </includes>-->
-<!--                </configuration>-->
+                </configuration>
+
             </plugin>
 
         </plugins>

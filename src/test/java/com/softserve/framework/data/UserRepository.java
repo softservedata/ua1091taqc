@@ -15,7 +15,8 @@ public final class UserRepository {
     }
 
     public static User getValidUserQwertyY() {
-        return new User("tyv09754@zslsz.com", "Qwerty_1", "QwertyY");
+        //return new User("tyv09754@zslsz.com", "Qwerty_1", "QwertyY");
+        return new User("tyv09754@zslsz.com", System.getenv().get("USER_QWERTY"), "QwertyY");
     }
 
     public static User getValidUserMyName() {

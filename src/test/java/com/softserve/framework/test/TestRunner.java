@@ -1,6 +1,7 @@
 package com.softserve.framework.test;
 
 import com.softserve.edu.Applog;
+import com.softserve.framework.data.PropertiesRepository;
 import com.softserve.framework.library.GuestFunctions;
 import com.softserve.framework.tools.LocalStorageJS;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -37,6 +38,8 @@ public abstract class TestRunner {
     private static final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss-S";
     protected static GuestFunctions guestFunctions;
     protected static LocalStorageJS localStorageJS;
+
+    private static  String baseUrl;
 
     protected static WebDriver driver;
     protected static boolean isTestSuccessful = false;
@@ -124,6 +127,12 @@ public abstract class TestRunner {
         //
         guestFunctions = new GuestFunctions(driver);
         localStorageJS = new LocalStorageJS(driver);
+        //
+        baseUrl= PropertiesRepository.getBaseUrl();
+        if (baseUrl == null) {
+            baseUrl = BASE_URL;
+        }
+        //
         System.out.println("@BeforeAll executed");
     }
 
@@ -137,7 +146,8 @@ public abstract class TestRunner {
 
     @BeforeEach
     public void setupThis() {
-        driver.get(BASE_URL);
+        //driver.get(BASE_URL);
+        driver.get(baseUrl);
         closePopup();
         System.out.println("\t@BeforeEach executed");
     }

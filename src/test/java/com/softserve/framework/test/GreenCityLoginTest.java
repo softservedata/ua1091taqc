@@ -24,14 +24,14 @@ public class GreenCityLoginTest extends TestRunner {
 //        return Stream.of(
 //                Arguments.of(new User("tyv09754@zslsz.com", "Qwerty_1", "QwertyY"))
 //        );
-//        return Stream.of(
-//                Arguments.of(UserRepository.getValidUserQwertyY()),
+        return Stream.of(
+                Arguments.of(UserRepository.getValidUserQwertyY())//,
 //                Arguments.of(UserRepository.getValidUserMyName())
-//        );
+        );
 //        return UserRepository.fromList().stream()
 //                .map(user->Arguments.of(user));
-        return UserRepository.fromCsv().stream()
-                .map(user->Arguments.of(user));
+//        return UserRepository.fromCsv().stream()
+//                .map(user->Arguments.of(user));
     }
 
     //@ParameterizedTest(name = "{index} => email={0}, password={1}, username={2}")
